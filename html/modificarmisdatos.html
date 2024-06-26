@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar</title>
+    <link rel="stylesheet" href="css/modificarmisdatos.css">
+</head>
+<body>
+    <div action="/modificar_list"></div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="consolas.html">Consolas</a></li>
+                <li><a href="compras.html">Compras</a></li>
+                <li><a href="contacto.html">Contáctanos</a></li>
+                <li><a href="misconsultas.html">Mis Consultas</a></li>
+                <li><a href="FormularioImagen.html">Sugerencia</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <h2>Modificar mis datos</h2>
+    <form id="modificar-form" action="/modificar_datos" method="POST"> 
+        <input type="hidden" id="id" name="id"> 
+        <div>
+            <label for="nombre">Nombre</label> 
+            <input type="text" id="nombre" name="nombre" required> 
+        </div>
+        <div>
+            <label for="apellido">Apellido</label> 
+            <input type="text" id="apellido" name="apellido" required>
+        </div>
+        <div>
+            <label for="alias">Alias</label> 
+            <input type="text" id="alias" name="alias" required>
+        </div>
+        <div>
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" size="30" required />
+        </div>
+        <div>
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Guardar Cambios</button> 
+    </form>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const usuarioId = urlParams.get('id'); 
+        const modificarForm = document.getElementById('modificar-form'); 
+        const idInput = document.getElementById('id'); 
+        const nombreInput = document.getElementById('nombre'); 
+        const apellidoInput = document.getElementById('apellido'); 
+        const aliasInput = document.getElementById('alias');
+        const correoInput = document.getElementById('email'); 
+        const contraseñaInput = document.getElementById('password');
+
+
+        fetch('/registro/' + usuarioId) 
+            .then(response => response.json()) 
+            .then(registro => {
+                idInput.value = registro.id;
+                nombreInput.value = registro.nombre;
+                apellidoInput.value = registro.apellido;
+                aliasInput.value = registro.alias; 
+                correoInput.value = registro.email;
+                contraseñaInput.value = registro.password;
+            })
+    </script>
+    <footer>
+        <h3 class="footer-title-menu">Menú</h3>
+        <ul class="footer-lista-menu">
+            <li class="footer-lista-menu"><a href="index.html">Inicio</a></li>
+            <li class="footer-lista-menu"><a href="consolas.html">Consolas</a></li>
+            <li class="footer-lista-menu"><a href="compras.html">Mi carro</a></li>
+        </ul>
+        <h3 class="footer-title-inf">Información</h3>
+            <p class="footer-text-inf">tiendabacan@hotmail.com</p>
+            <p class="footer-text-inf">Av. SantoTomas 908</p>
+            <p class="footer-text-inf">+ 56 9 5896 4125</p>
+    </footer>
+</body>
+</html>

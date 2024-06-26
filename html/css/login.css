@@ -1,0 +1,101 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Estilos del encabezado */
+  header {
+    background-color: #682a2a;
+    color: white;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav li {
+    margin: 0 10px;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    color: #ccc;
+  }
+  
+  /* Estilos del pie de página */
+  footer {
+    background-color: #682a2a;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .footer-title-menu,
+  .footer-title-inf {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .footer-lista-menu {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-lista-menu li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-lista-menu a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer-lista-menu a:hover {
+    color: #ccc;
+  }
+  
+  .footer-text-inf {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  /* Animaciones */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-in {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  header {
+    animation: fade-in 0.5s;
+  }
+  
+  footer {
+    animation: slide-in 0.5s;
+  }

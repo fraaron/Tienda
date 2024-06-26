@@ -1,0 +1,146 @@
+/* Estilos generales */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos del encabezado */
+header {
+  background-color: #682a2a;
+  color: rgb(197, 1, 1);
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav li {
+  margin: 0 10px;
+  animation: navItemAnimation 3s ease-in-out infinite;
+}
+@keyframes navItemAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #aa4949;
+}
+
+/* Estilos del formulario de inicio de sesión */
+.inicio-title {
+  text-align: center;
+  margin-top: 40px;
+  color: #2c2828;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+#form-iniciosesion {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+#form-iniciosesion label {
+  display: block;
+  margin-bottom: 10px;
+  color: #555;
+  font-weight: bold;
+}
+
+#form-iniciosesion input[type="email"],
+#form-iniciosesion input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+#form-iniciosesion input[type="submit"] {
+  background-color: #682a2a;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+#form-iniciosesion input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Estilos del mensaje */
+#mensaje {
+  text-align: center;
+  margin-top: 20px;
+  color: red;
+  font-weight: bold;
+}
+
+/* Estilos del pie de página */
+footer {
+  background-color: #682a2a;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer-title-menu,
+.footer-title-inf {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.footer-lista-menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-lista-menu li {
+  margin-bottom: 5px;
+}
+
+.footer-lista-menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-lista-menu a:hover {
+  color: #ccc;
+}
+
+.footer-text-inf {
+  margin: 5px 0;
+  font-size: 14px;
+}

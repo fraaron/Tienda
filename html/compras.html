@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+    <link rel="stylesheet" href="css/compras.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="consolas.html">Consolas</a></li>
+                <li><a href="compras.html">Compras</a></li>
+                <li><a href="contacto.html">Contáctanos</a></li>
+            </ul>
+        </nav>
+    </header>
+<!-- --------------------Tabla------------------------------- -->
+    <h2>Carrito de compras</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody id="lista-carro"></tbody>
+    </table>
+<!-- --------------------------------------------------- -->
+<!-- -----------------------Script para traer los datos de la tabla ------------------------------- -->
+<script>
+    window.onload = function () {
+        fetch('/carrito')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            var carritoList = document.getElementById('lista-carro');
+            data.forEach(function(carrito) {
+                var row = document.createElement('tr');
+                row.innerHTML = '<td>' + carrito.idcarrito + '</td>' +
+                                '<td>' + carrito.nombre + '</td>' +
+                                '<td>' + carrito.cantidad + '</td>' +
+                                '<td>' + carrito.precio + '</td>' +
+                                '<td>' +
+                                        '<button onclick="eliminarProducto(' + carrito.idcarrito + ')">Eliminar</button>' +
+                                    '</td>';
+                carritoList.appendChild(row);
+            });
+        });
+    };
+</script>  
+
+
+<script>
+        
+    function eliminarProducto(idcarrito) {
+        fetch('/eliminar_producto/' + idcarrito, {
+            method: 'DELETE'
+        })
+        .then(function(response) {
+            if (response.ok) {
+                console.log('Producto eliminado correctamente.');
+                window.location.reload();
+            } else {
+                console.error('Error al eliminar producto.');
+            }
+        })
+        .catch(function(error) {
+            console.error('Error en la solicitud:', error);
+        });
+    }
+
+</script>
+
+<!-- --------------------------------------------------- -->
+    <footer>
+        <h3 class="footer-title-menu">Menú</h3>
+        <ul class="footer-lista-menu">
+            <li class="footer-lista-menu"><a href="index.html">Inicio</a></li>
+            <li class="footer-lista-menu"><a href="consolas.html">Consolas</a></li>
+            <li class="footer-lista-menu"><a href="compras.html">Mi carro</a></li>
+        </ul>
+        <h3 class="footer-title-inf">Información</h3>
+            <p class="footer-text-inf">tiendabacan@hotmail.com</p>
+            <p class="footer-text-inf">Av. SantoTomas 908</p>
+            <p class="footer-text-inf">+ 56 9 5896 4125</p>
+    </footer>
+</body>
+</html>

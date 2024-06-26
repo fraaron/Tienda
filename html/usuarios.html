@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar nuevo usuario</title>
+    <link rel="stylesheet" href="css/registro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            animation: slideDown 0.5s ease;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            animation: slideUp 0.5s ease;
+        }
+
+        label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f5f5f5;
+            animation: slideRight 0.5s ease;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #2980b9;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            animation: slideLeft 0.5s ease;
+        }
+
+        button:hover {
+            background-color: #3498db;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideRight {
+            0% { transform: translateX(-50px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideLeft {
+            0% { transform: translateX(50px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registrar nuevo usuario</h1>
+        <form id="Usuarios-form" action="/usuarios-form" method="POST"> 
+            <input type="hidden" id="id" name="id"> 
+            <div class="form-group">
+                <label for="nombre">Nombre</label> 
+                <input type="text" id="nombre" name="nombre" required> 
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido</label> 
+                <input type="text" id="apellido" name="apellido" required>
+            </div>
+            <div class="form-group">
+                <label for="alias">Alias</label> 
+                <input type="text" id="alias" name="alias" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" size="30" required />
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Guardar Cambios</button> 
+        </form>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const usuarioId = urlParams.get('id'); 
+        const modificarForm = document.getElementById('Usuarios-form'); 
+        const idInput = document.getElementById('id'); 
+        const nombreInput = document.getElementById('nombre'); 
+        const apellidoInput = document.getElementById('apellido'); 
+        const aliasInput = document.getElementById('alias');
+        const correoInput = document.getElementById('email'); 
+        const contraseñaInput = document.getElementById('password');
+
+
+        fetch('/registro/' + usuarioId) 
+            .then(response => response.json()) 
+            .then(registro => {
+                idInput.value = registro.id;
+                nombreInput.value = registro.nombre;
+                apellidoInput.value = registro.apellido;
+                aliasInput.value = registro.alias; 
+                correoInput.value = registro.email;
+                contraseñaInput.value = registro.password;
+            })
+    </script>
+</body>
+</html>

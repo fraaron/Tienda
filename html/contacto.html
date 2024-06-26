@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="css/contacto.css">
+</head>
+<script type="text/javascript">
+    <!--
+    function valida()
+    {
+        var campo = document.getElementById("nombre");
+        var expresion = /^[a-zA-Z]{1,}$/;
+        if (!campo.value.match(expresion))
+        {
+        alert('Nombre Incorrecto');
+        return;
+        }
+        Document.form1.submit();
+    }
+    //-->
+    </script>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="consolas.html">Consolas</a></li>
+                <li><a href="iniciosesion.html">Iniciar Sesión</a></li>
+                <li><a href="contacto.html">Contáctanos</a></li>
+            </ul>
+        </nav>
+    </header>
+<!-- -------------------Formulario-------------------------------- -->
+    <h2>Contáctanos</h2>
+    <form id="formulario-contacto" action="/guardar_consulta" method="post">
+    
+        <div>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div>
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" required>
+        <div>
+            <label for="rut">RUT</label>
+            <input type="number" id="rut" name="rut" required>
+        </div>
+        <div>
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" size="30" required />
+        </div>
+        <div>
+            <label for="telefono">Teléfono</label>
+            <input type="number" id="telefono" name="telefono" required>
+        </div>
+        <div>
+            <label for="razon">Razón de su consulta</label>
+            <select id="select-consulta" name="razon" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="Queja">Queja</option>
+                <option value="Consulta">Consulta</option>
+                <option value="Sugerencia">Sugerencia</option>
+                <option value="Felicitación">Felicitación</option>5
+            </select>
+        </div>
+        <div>
+            <label for="descripcion">Descripción</label>
+            <textarea id="texto" name="descripcion" placeholder="Ingrese su razón"></textarea>
+        </div>
+        <div action="/upload">
+        <label for="imagen">Selecciona una imagen:</label><br>
+        <input type="file" id="imagen" name="imagen" accept="image/*"><br><br>
+        </div>
+        <div class="btn-contacto">
+            <input type="submit" value="Contactar" onclick="valida();">
+            <input type="button" value="Limpiar">
+            <a href="javascript:history.back()">Volver</a>
+        </div>
+    </form>
+<!-- --------------------------------------------------- -->
+    <footer>
+        <h3 class="footer-title-menu">Menú</h3>
+        <ul class="footer-lista-menu">
+            <li class="footer-lista-menu"><a href="index.html">Inicio</a></li>
+            <li class="footer-lista-menu"><a href="consolas.html">Consolas</a></li>
+        </ul>
+        <h3 class="footer-title-inf">Información</h3>
+            <p class="footer-text-inf">tiendabacan@hotmail.com</p>
+            <p class="footer-text-inf">Av. SantoTomas 908</p>
+            <p class="footer-text-inf">+ 56 9 5896 4125</p>
+    </footer>
+</body>
+</html>

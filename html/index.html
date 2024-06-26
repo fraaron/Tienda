@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div action="/index_inicio"></div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="consolas.html">Consolas</a></li>
+                <li><a href="iniciosesion.html">Iniciar Sesión</a></li>
+                <li><a href="contacto.html">Contáctanos</a></li>
+                <li><a href="FormularioImagen.html">Sugerencia</a></li>
+            </ul>
+        </nav>
+    </header>
+    <footer>
+        <h3 class="footer-title-menu">Menú</h3>
+        <ul class="footer-lista-menu">
+            <li class="footer-lista-menu"><a href="index.html">Inicio</a></li>
+            <li class="footer-lista-menu"><a href="consolas.html">Consolas</a></li>
+        </ul>
+        <h3 class="footer-title-inf">Información</h3>
+            <p class="footer-text-inf">tiendabacan@hotmail.com</p>
+            <p class="footer-text-inf">Av. SantoTomas 908</p>
+            <p class="footer-text-inf">+ 56 9 5896 4125</p>
+    </footer>
+</body>
+</html>
+<script>
+    // Función para cargar las imágenes al cargar la página
+    window.onload = function () {
+        fetch('/imagenes')
+        .then(response => response.json())
+        .then(data => {
+            const imagenesDiv = document.getElementById('imagenesSubidas');
+            data.forEach(imagen => {
+                const imgDiv = document.createElement('div');
+                imgDiv.innerHTML = 
+                    '<h3>' + imagen.nombre + '</h3>' +
+                    '<p>' + imagen.descripcion + '</p>' +
+                    '<img src="/imagenes/' + imagen.imagen + '" alt="' + imagen.nombre + '" width="200">';
+                imagenesDiv.appendChild(imgDiv);
+            });
+        });
+    };
+</script>

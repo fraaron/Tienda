@@ -1,0 +1,210 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Estilos del encabezado */
+  header {
+    background-color: #682a2a;
+    color: white;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  nav li {
+    margin: 0 10px;
+    animation: navItemAnimation 3s ease-in-out infinite;
+  }
+  @keyframes navItemAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    color: #ccc;
+  }
+  
+  /* Estilos del formulario de contacto */
+  #formulario-contacto {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  #formulario-contacto h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  #formulario-contacto div {
+    margin-bottom: 20px;
+  }
+  
+  #formulario-contacto label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+  }
+  
+  #formulario-contacto input[type="text"],
+  #formulario-contacto input[type="email"],
+  #formulario-contacto input[type="tel"],
+  #formulario-contacto select,
+  #formulario-contacto textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+  #formulario-contacto textarea {
+    height: 150px;
+  }
+  
+  #formulario-contacto .btn-contacto {
+    text-align: center;
+  }
+  
+  #formulario-contacto input[type="submit"],
+  #formulario-contacto input[type="button"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+  }
+  
+  #formulario-contacto input[type="button"] {
+    background-color: #f44336;
+  }
+  
+  #formulario-contacto input[type="submit"]:hover,
+  #formulario-contacto input[type="button"]:hover {
+    background-color: #45a049;
+  }
+  
+  #formulario-contacto a {
+    color: #555;
+    text-decoration: none;
+  }
+  
+  #formulario-contacto a:hover {
+    color: #333;
+  }
+  
+  /* Estilos del pie de página */
+  footer {
+    background-color: #682a2a;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .footer-title-menu,
+  .footer-title-inf {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .footer-lista-menu {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-lista-menu li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-lista-menu a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer-lista-menu a:hover {
+    color: #ccc;
+  }
+  
+  .footer-text-inf {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  /* Animaciones */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-in {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  #formulario-contacto {
+    animation: fade-in 0.5s;
+  }
+  
+  #formulario-contacto div {
+    animation: slide-in 0.5s;
+  }
+  
+  #formulario-contacto label {
+    animation: fade-in 0.5s;
+  }
+  
+  #formulario-contacto input[type="text"],
+  #formulario-contacto input[type="email"],
+  #formulario-contacto input[type="tel"],
+  #formulario-contacto select,
+  #formulario-contacto textarea {
+    animation: slide-in 0.5s;
+  }
+  
+  #formulario-contacto .btn-contacto {
+    animation: slide-in 0.5s;
+  }

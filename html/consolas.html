@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>Consolas</title>
+    <link rel="stylesheet" href="css/consolas.css">
+</head>
+<body>
+    <div action="/index_inicio"></div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="consolas.html">Consolas</a></li>
+                <li><a href="iniciosesion.html">Iniciar Sesión</a></li>
+                <li><a href="contacto.html">Contáctanos</a></li>
+            </ul>
+        </nav>
+    </header>
+<!-- ----------PRODUCTOS PARA AGREGAR--------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<section class="console-section" action="guardar_producto" id="agregar-producto">
+    <div clas="console-container">
+        <div class="console-section-products">
+            <div class="producto">
+                <p>PlayStation 5</p>
+                <p>$50000</p>
+                <input type="number" id="cantidad-ps5" value="1">
+                <button onclick="agregarAlCarrito('PlayStation 5', document.getElementById('cantidad-ps5').value, 5.000)">Agregar al Carrito</button>
+            </div>
+            <div class="producto">
+                <p>Wii u</p>
+                <p>$6000</p>
+                <input type="number" id="cantidad-wiiu" value="1">
+                <button onclick="agregarAlCarrito('Wii u', document.getElementById('cantidad-wiiu').value, 6.000)">Agregar al Carrito</button>
+            </div>
+            <div class="producto">
+                <p>PSPVita</p>
+                <p>$6000</p>
+                <input type="number" id="cantidad-pspvita" value="1">
+                <button onclick="agregarAlCarrito('PSPVita', document.getElementById('cantidad-pspvita').value, 6.000)">Agregar al Carrito</button>
+            </div>
+            <div class="producto">
+                <p>Nintendo 3DS XL</p>
+                <p>$6000</p>
+                <input type="number" id="cantidad-nintendo3ds" value="1">
+                <button onclick="agregarAlCarrito('Nintendo 3DS XL', document.getElementById('cantidad-nintendo3ds').value, 6.000)">Agregar al Carrito</button>
+            </div>
+            <div class="producto">
+                <p>Nintendo Switch Lite</p>
+                <p>$6000</p>
+                <input type="number" id="cantidad-nintendoswitch" value="1">
+                <button onclick="agregarAlCarrito('Nintendo Switch Lite', document.getElementById('cantidad-nintendoswitch').value, 6.000)">Agregar al Carrito</button>
+            </div>
+            <div class="producto">
+                <p>Xbox 360</p>
+                <p>$6000</p>
+                <input type="number" id="cantidad-xbox360" value="1">
+                <button onclick="agregarAlCarrito('Xbox 360', document.getElementById('cantidad-xbox360').value, 6.000)">Agregar al Carrito</button>
+            </div>
+            <div class="producto">
+                <p>Xbox One</p>
+                <p>$6000</p>
+                <input type="number" id="cantidad-xboxone" value="1">
+                <button onclick="agregarAlCarrito('Xbox One', document.getElementById('cantidad-xboxone').value, 6.000)">Agregar al Carrito</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const tablaCarrito = document.getElementById('tabla-carrito').getElementsByTagName('tbody')[0];
+
+    function agregarAlCarrito(nombre, cantidad, precio) {
+        fetch('/guardar_producto', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nombre, cantidad, precio })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const nuevaFila = tablaCarrito.insertRow();
+                nuevaFila.insertCell(0).textContent = nombre;
+                nuevaFila.insertCell(1).textContent = cantidad;
+                nuevaFila.insertCell(2).textContent = precio;
+            } else {
+                alert('Error al agregar el producto al carrito.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+<!-- ----------PRODUCTOS PARA AGREGAR--------------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+    <footer>
+        <h3 class="footer-title-menu">Menú</h3>
+        <ul class="footer-lista-menu">
+            <li class="footer-lista-menu"><a href="index.html">Inicio</a></li>
+            <li class="footer-lista-menu"><a href="consolas.html">Consolas</a></li>
+        </ul>
+        <h3 class="footer-title-inf">Información</h3>
+            <p class="footer-text-inf">tiendabacan@hotmail.com</p>
+            <p class="footer-text-inf">Av. SantoTomas 908</p>
+            <p class="footer-text-inf">+ 56 9 5896 4125</p>
+    </footer>
+</body>
+</html>
